@@ -1,28 +1,32 @@
+:root{
+	--hover:#f81515;
+	--btn-bg:#e90f0f;
+	--btn-border:#e90f0f;
+	--textWhite:#fff;
+}
 
-a,button {
-	color: #fff;
-	background-color: #e90f0f;
+a,
+button {
+	color: var(--textWhite);
+	background-color: var(--btn-bg);
 	text-decoration: none;
-	border: solid #e90f0f 2px;
+	border: solid var(--btn-border) 2px;
 	border-radius: 5px;
 	text-align: center;
 	font-size: 1rem;
 }
 
-a:hover{
-	opacity: 0.5;
-}
 
+
+a:hover {
+	background-color: var(--hover);
+}
 
 .headerComponent {
 	position: relative;
-	height: 700px;
+	height: 95vh;
 	min-width: 99%;
-	/* max-width: 1600px; */
-	background: url("./assets/netflix.jpg");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	background: url("./assets/netflix.jpg") no-repeat center center/cover;
 }
 
 .nav_link {
@@ -35,33 +39,32 @@ a:hover{
 }
 
 .nav_link a {
-	margin: 0.6rem 2.3rem;
-	padding: 0.2rem 0.8rem;
+	margin: 0.6rem 3rem;
+	padding: 0.5rem 1rem;
 }
 .nav_link img {
 	width: 10rem;
 	margin: 0.6rem 2.3rem;
 }
 
-.showcase{
-	width: 100%;
+.showcase {
+	height: 400px;
 	display: flex;
+	width: 100%;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	margin-top: 17rem;
+	text-align: center;
+	justify-content: flex-end;
+	padding-top: 50px;
+	margin-top: 1rem;
 }
 
 .showcase > h1,
 .showcase > h3,
 .showcase > p {
-  margin-bottom: 1rem;
-  text-align: center;
- font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.showcase > p {
-	font-size: 1.1rem;
+	margin-bottom: 1rem;
+	text-align: center;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .showcase div {
@@ -69,39 +72,136 @@ a:hover{
 	display: flex;
 	justify-content: center;
 }
-
-.showcase input[type='text']{
-	width: 25%;
-	color: #000;
-	outline: none;
-	padding: 1rem 0;
+.showcase p {
+	font-size: 17px;
+	word-spacing: 2px;
 }
+
 .btn {
-	width: 10%;
+	width: 13%;
+	display: inline-block;
 	outline: none;
 	border: none;
 	cursor: pointer;
-	border-right: solid #e90f0f 2px;
-	 border-top-right-radius: 0;
-	  border-bottom-right-radius: 0;
-	  border-top-left-radius: 0;
-	  border-bottom-left-radius: 0;
-	  font-size: 1.3rem;
+	border-right: solid var(--btn-border) 2px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	font-size: 1.3rem;
 }
 
-.btn:hover{
-	opacity: 0.5;
+.btn:hover {
+	background-color: var(--hover);
 }
 
 .btn > i {
-  margin-left: 1rem;
-} 
+	margin-left: 1rem;
+}
 
-@media(max-width: 992px){
-	 #input{
-		 display: flex;
-	 }
+/* input[type="email"] {
+	width: 32%;
+	height: 60px;
+	color: #000;
+	outline: none;
+	padding: 1rem 0;
+} */
+
+.input-wrapper {
+	position: relative;
+	width: 50%;
+}
+.inputText[type="email"] {
+	position: relative;
+	height: 60px;
+	min-width: 32%;
+	outline: none;
+	border: none;
+	color: #000;
+	padding-left: 9px;
+}
+
+.placeholder {
+	font-weight: bold;
+	position: absolute;
+	pointer-events: none;
+	top: 21px;
+	left: 28rem;
+	transition: 0.5 ease-in-out;
+	color: #5d5b5bde;
+}
+input:focus ~ .placeholder,
+input:not(:focus):valid ~ .placeholder {
+	top: 5px;
+	font-size: 12px;
+	opacity: 1;
+	margin-bottom: 2px;
 }
 
 
+/* viewcase */
+.content{
+	color: var(--textWhite);
+	 background: #000;
+	 border-top: 5px solid #312f2f;
+	 border-width: 8px;
+	 display: grid;
+	 grid-template-columns: repeat(2,1fr);
+	 grid-gap: 10px;
+}
+
+/* conditional styles */
+.content > div.rtl{
+	order: 1
+}
+.textred{
+	margin-left: 5rem !important;
+}
+
+.content > div:first-child {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	width: 40vw;
+	margin-left: 5rem;
+}
+
+
+div:first-child > h1 {
+	font-size: 50px;
+	margin-left: -11.5rem;
+}
+
+div:first-child > h3 {
+	margin-left: 0.6rem;
+	margin-top: 1rem;
+	letter-spacing: 1px;
+	line-height: 1.3;
+	font-size: 26px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 1rem 0.5rem;
+}
+.content > div:last-child{
+	position: relative;
+  margin: 2rem 6rem;
+}
+
+.content div:first-child + div > .bg-img, img{
+	  width: 550px;
+	  height: 400px;
+	  position: relative;
+	
+}
+img{
+	z-index: 500;
+}
+ video{
+	position: absolute;
+	top: 5.2rem;
+	left: 4.5rem;
+	width: 400px;
+	z-index: 400;
+	
+}
 
