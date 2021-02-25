@@ -2,23 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../custom.css";
 
-function SubMain({ title, description, src, src2, type, rtl }) {
+function SubMain({ title, description, src, src2, type, alt,children,imageMiddle,imageLast }) {
 	return (
-		<div className="content">
-			<div style={rtl && { order: 1 }}>
-				<h1 className={rtl && "textred"}>{title}</h1>
-				<h3 className={rtl && "textred"}>{description}</h3>
-			</div>
-
-			<div className="bg-img">
-				<div>
-					<img src={src2} alt="" />
+		<>
+			<main className="main_view">
+				<div className="view_text">
+					<h1>{title}</h1>
+					<h2>{description}</h2>
 				</div>
-				<video autoPlay loop muted>
-					<source src={src} type={type} />
-				</video>
-			</div>
-		</div>
+
+				<div className={`${imageLast && "last_special"}`}>
+					<video
+						className={`video ${imageMiddle && "special"}`}
+						autoPlay
+						loop
+						muted>
+						<source src={src} type={type} />
+					</video>
+					<img className="img" src={src2} alt={alt} />
+					{children}
+				</div>
+			</main>
+		</>
 	);
 }
 
@@ -27,7 +32,9 @@ SubMain.propTypes = {
 	description: PropTypes.string.isRequired,
 	src: PropTypes.string,
 	src2: PropTypes.string.isRequired,
-	type: PropTypes.string,
-	rtl: PropTypes.bool 
+	children:PropTypes.any,
+	imageMiddle:PropTypes.bool,
+	imageLast:PropTypes.bool,
 };
+
 export default SubMain;

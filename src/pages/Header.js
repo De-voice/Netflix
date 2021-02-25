@@ -1,34 +1,50 @@
-import React from "react";
+import React,{ useState } from "react";
 import "../custom.css";
 import logo from "../assets/logo.png";
+import Input from "../component/Input";
 
 const Header = () => {
+	const [text,setText] = useState("");
+
+	const handleChange = (e) => {
+        setText(e.target.value)
+	}
+
 	return (
 		<>
-			<header className="headerComponent">
+			<header className="headComponent">
+				{/* top layer logo and signIn */}
 				<div className="nav_link">
-					<img src={logo} alt="Netflix" />
-					<a href="#!">Sign In</a>
+					<img src={logo} className="logo" alt="Netflix" />
+					<a className="signIn" href="#!">
+						Sign In
+					</a>
 				</div>
 
-      {/* showcase with form */}
 				<div className="showcase">
-					<h1>Unlimited movies, TV </h1>
-					<h1>shows, and more.</h1>
-					<h3>Watch anywhere. Cancel anytime.</h3>
-					<p>
-						Ready to watch? Enter your email to create or restart your
-						membership.
-					</p>
-
-					<div className="input-wrapper">
-						<input type="email" className="inputText" required />
-						<span className="placeholder">Email address</span>
-						<button className="btn">
-							Get Started
-							<i className="fas fa-chevron-right fa-md"></i>
-						</button>
+					<div className="showCaseText">
+						<h1>Unlimited movies, TV</h1>
+						<h1>shows, and more.</h1>
+						<h2>Watch anywhere. Cancel anytime.</h2>
+						<h3>
+							Ready to watch? Enter your email to create or restart your
+							membership.
+						</h3>
 					</div>
+
+					<form className="emailLetter" action="">
+						<Input
+							type="text"
+							value={text}
+							name=""
+							onChange={handleChange}
+							placeholder="Email Address"
+						/>
+						{/* <span className="placeholder">Email Address</span> */}
+
+						<i className="fas fa-chevron-right fa-md"></i>
+						<Input type="submit" value="Get Started" name="" />
+					</form>
 				</div>
 			</header>
 		</>
